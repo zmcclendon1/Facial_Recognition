@@ -1,37 +1,29 @@
 # imports
 import cv2
-<<<<<<< HEAD
 import numpy as np
 import pyautogui
 import time
-=======
 
 
->>>>>>> 0b003f247e01befef510edaf1f160986609bafd0
 #Models
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 smile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
 
-<<<<<<< HEAD
 
 #Defining Faces and Smiles
 def detect_faces_and_smiles(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30))
-=======
 #Defining Faces and Smiles
 def detect_faces_and_smiles(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
->>>>>>> 0b003f247e01befef510edaf1f160986609bafd0
-    #Boxes and Colors
+   #Boxes and Colors
     for (x, y, w, h) in faces:
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = frame[y:y+h, x:x+w]
 
         smiles = smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
-
-<<<<<<< HEAD
         color = (0, 0, 255)  
         for (sx, sy, sw, sh) in smiles:
                        
@@ -52,20 +44,10 @@ def screenshot_save():
     smile_screenshot = cv2.cvtColor(np.array(smile_screenshot), 
                         cv2.COLOR_RGB2BGR) 
     cv2.imwrite(f'screenshot_smiled-{timestamp}.png', smile_screenshot)
-
-
-
-=======
-        color = (255, 0, 0)  
-        for (sx, sy, sw, sh) in smiles:
-            color = (0, 255, 0)  
-            cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), color, 2)
+    color = (255, 0, 0)  
 
         
-        cv2.rectangle(frame, (x, y), (x+w, y+h), color, 2)
-
     return frame
->>>>>>> 0b003f247e01befef510edaf1f160986609bafd0
 #Handling Video Capture and UI Window
 video_capture = cv2.VideoCapture(0)
 
