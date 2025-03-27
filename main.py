@@ -10,10 +10,7 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 smile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
 
 
-#Defining Faces and Smiles
-def detect_faces_and_smiles(frame):
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30))
+
 #Defining Faces and Smiles
 def detect_faces_and_smiles(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
